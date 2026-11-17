@@ -1,10 +1,10 @@
 import { useState, FormEvent } from 'react';
 import {
   Phone, Mail, MapPin, Clock, MessageCircle, Send,
-  CheckCircle, AlertCircle, Loader2, Facebook, Instagram, Twitter,
+  CheckCircle, AlertCircle, Loader2,
 } from 'lucide-react';
 import { company, services } from '../lib/data';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 type FormState = {
   name: string;
@@ -44,15 +44,31 @@ export default function Contact() {
       return;
     }
 
-    const { error } = await supabase.from('contact_inquiries').insert({
-      name: form.name,
-      email: form.email,
-      phone: form.phone || null,
-      service: form.service || null,
-      message: form.message,
-    });
+    if (!supabase) {
+      setStatus('error');
+      setErrorMsg(
+        isSupabaseConfigured
+          ? 'Something went wrong. Please try again or call us directly.'
+          : 'Backend not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file, or call us directly.'
+      );
+      return;
+    }
 
-    if (error) {
+    try {
+      const { error } = await supabase.from('contact_inquiries').insert({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || null,
+        service: form.service || null,
+        message: form.message,
+      });
+
+      if (error) {
+        setStatus('error');
+        setErrorMsg('Something went wrong. Please try again or call us directly.');
+        return;
+      }
+    } catch {
       setStatus('error');
       setErrorMsg('Something went wrong. Please try again or call us directly.');
       return;
@@ -104,7 +120,7 @@ export default function Contact() {
               {
                 icon: Mail,
                 title: 'Email Us',
-                lines: [company.email, company.emailBookings],
+                lines: [company.email, company.postalAddress],
                 href: `mailto:${company.email}`,
               },
               {
@@ -302,15 +318,6 @@ export default function Contact() {
               <div className="bg-slate-50 rounded-2xl p-6">
                 <h3 className="font-display font-bold text-lg text-slate-900 mb-4">Connect with us</h3>
                 <div className="flex gap-3">
-                  <a href={company.social.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white shadow-md hover:bg-primary-600 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 text-slate-600">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white shadow-md hover:bg-primary-600 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 text-slate-600">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                  <a href={company.social.twitter} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white shadow-md hover:bg-primary-600 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 text-slate-600">
-                    <Twitter className="w-5 h-5" />
-                  </a>
                   <a href={company.social.whatsapp} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white shadow-md hover:bg-primary-600 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 text-slate-600">
                     <MessageCircle className="w-5 h-5" />
                   </a>

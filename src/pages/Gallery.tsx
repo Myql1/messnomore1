@@ -1,18 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, X, ArrowRight, Camera } from 'lucide-react';
+import { X, ArrowRight, Camera, Sparkles, PlayCircle } from 'lucide-react';
 import { galleryImages } from '../lib/data';
-
-const categories = ['All', 'Residential', 'Commercial', 'Carpet', 'Windows', 'Move In/Out', 'Post-Construction'];
+import { LogoImg } from '../components/Logo';
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState('All');
   const [lightbox, setLightbox] = useState<string | null>(null);
-
-  const filteredImages =
-    activeCategory === 'All'
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === activeCategory);
 
   return (
     <div>
@@ -20,7 +13,7 @@ export default function Gallery() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.pexels.com/photos/4239030/pexels-photo-4239030.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/slider/WhatsApp Image 2026-10-07 at 6.21.33 AM.jpeg"
             alt="Gallery"
             className="w-full h-full object-cover"
           />
@@ -42,29 +35,12 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Filter & Gallery */}
+      {/* Gallery */}
       <section className="section-padding">
         <div className="container-max">
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 ${
-                  activeCategory === cat
-                    ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/30'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
           {/* Gallery Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredImages.map((img, i) => (
+            {galleryImages.map((img, i) => (
               <div
                 key={i}
                 onClick={() => setLightbox(img.src)}
@@ -72,19 +48,158 @@ export default function Gallery() {
               >
                 <img
                   src={img.src}
-                  alt={img.title}
+                  alt="Gallery"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <span className="text-xs font-medium text-primary-300 uppercase tracking-wider">{img.category}</span>
-                  <h3 className="font-display font-bold text-white text-lg">{img.title}</h3>
-                </div>
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Sparkles className="w-5 h-5 text-white" />
+                  <LogoImg className="w-5 h-5 text-white object-contain" />
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Before & After */}
+      <section className="section-padding bg-white">
+        <div className="container-max">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 mb-5">
+              <Sparkles className="w-4 h-4 text-primary-600" />
+              <span className="text-sm font-semibold text-primary-700">Before & After</span>
+            </div>
+            <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-slate-900 mb-4">
+              See the transformation
+            </h2>
+            <p className="text-slate-600 leading-relaxed">
+              Watch how MessNoMore transforms spaces from messy to immaculate.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-slate-50 rounded-2xl shadow-xl overflow-hidden">
+              <div className="relative">
+                <video
+                  src="/VID-20260629-WA0027.mp4"
+                  controls
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-red-600 text-white text-sm font-semibold rounded-full">
+                  BEFORE
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">Before Cleaning</h3>
+                <p className="text-sm text-slate-500 mt-1">The space before our professional team arrived.</p>
+              </div>
+            </div>
+            <div className="bg-slate-50 rounded-2xl shadow-xl overflow-hidden">
+              <div className="relative">
+                <video
+                  src="/VID-20260629-WA0026.mp4"
+                  controls
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-emerald-600 text-white text-sm font-semibold rounded-full">
+                  AFTER
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">After Cleaning</h3>
+                <p className="text-sm text-slate-500 mt-1">Spotless results delivered by MessNoMore.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-8">
+            <div className="bg-slate-50 rounded-2xl shadow-xl overflow-hidden">
+              <div className="relative">
+                <video
+                  src="/VID-20260630-WA0010.mp4"
+                  controls
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-red-600 text-white text-sm font-semibold rounded-full">
+                  BEFORE
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">Before Cleaning</h3>
+                <p className="text-sm text-slate-500 mt-1">The space before our professional team arrived.</p>
+              </div>
+            </div>
+            <div className="bg-slate-50 rounded-2xl shadow-xl overflow-hidden">
+              <div className="relative">
+                <video
+                  src="/VID-20260630-WA0000.mp4"
+                  controls
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-emerald-600 text-white text-sm font-semibold rounded-full">
+                  AFTER
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">After Cleaning</h3>
+                <p className="text-sm text-slate-500 mt-1">Spotless results delivered by MessNoMore.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* In Action */}
+      <section className="section-padding bg-slate-50">
+        <div className="container-max">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 mb-5">
+              <PlayCircle className="w-4 h-4 text-primary-600" />
+              <span className="text-sm font-semibold text-primary-700">In Action</span>
+            </div>
+            <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-slate-900 mb-4">
+              See us at work
+            </h2>
+            <p className="text-slate-600 leading-relaxed">
+              Watch our team in action as we deliver exceptional cleaning results.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <video
+                src="/VID-20260630-WA0000.mp4"
+                controls
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">Cleaning in Action</h3>
+                <p className="text-sm text-slate-500 mt-1">Our team at work delivering spotless results.</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <video
+                src="/VID-20260630-WA0027.mp4"
+                controls
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">Detailed Cleaning</h3>
+                <p className="text-sm text-slate-500 mt-1">Attention to detail in every corner.</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <video
+                src="/VID-20260630-WA0000.mp4"
+                controls
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">Final Touch</h3>
+                <p className="text-sm text-slate-500 mt-1">The finishing touches that make the difference.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

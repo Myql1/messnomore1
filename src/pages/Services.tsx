@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import {
-  Sparkles, Home, Building2, HardHat, Truck, PanelsTopLeft,
+  Home, Building2, HardHat, Truck, PanelsTopLeft,
   CheckCircle, ArrowRight, PhoneCall, CalendarCheck, Shield, Leaf,
 } from 'lucide-react';
 import { services, company, processSteps } from '../lib/data';
+import { LogoImg } from '../components/Logo';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Home, Building2, Sparkles, HardHat, Truck, PanelsTopLeft,
+  Home, Building2, LogoImg, HardHat, Truck, PanelsTopLeft,
   PhoneCall, CalendarCheck, CheckCircle,
 };
 
@@ -17,7 +18,7 @@ export default function Services() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/surfaces.jpg"
             alt="Cleaning services"
             className="w-full h-full object-cover"
           />
@@ -26,7 +27,7 @@ export default function Services() {
         <div className="container-max px-5 sm:px-8 lg:px-16 xl:px-24 relative z-10">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/20 border border-primary-400/30 backdrop-blur-sm mb-6">
-              <Sparkles className="w-4 h-4 text-primary-300" />
+              <LogoImg className="w-4 h-4 text-primary-300 object-contain" />
               <span className="text-sm font-medium text-primary-100">Our Services</span>
             </div>
             <h1 className="font-display font-extrabold text-4xl lg:text-5xl text-white mb-6 leading-tight">
@@ -44,7 +45,7 @@ export default function Services() {
         <div className="container-max">
           <div className="space-y-20">
             {services.map((service, i) => {
-              const Icon = iconMap[service.icon] || Sparkles;
+              const Icon = iconMap[service.icon] || LogoImg;
               const isReversed = i % 2 === 1;
               return (
                 <div
@@ -60,9 +61,6 @@ export default function Services() {
                       />
                       <div className="absolute -top-5 -left-5 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-xl shadow-primary-600/30">
                         <Icon className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="absolute -bottom-5 right-5 bg-white rounded-xl shadow-xl px-5 py-3">
-                        <span className="font-display font-extrabold text-lg text-primary-600">{service.price}</span>
                       </div>
                     </div>
                   </div>
@@ -112,7 +110,7 @@ export default function Services() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((step, i) => {
-              const Icon = iconMap[step.icon] || Sparkles;
+              const Icon = iconMap[step.icon] || LogoImg;
               return (
                 <div key={i} className="bg-white rounded-2xl p-6 shadow-md card-hover border border-slate-100">
                   <div className="flex items-center justify-between mb-4">

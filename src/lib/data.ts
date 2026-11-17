@@ -1,24 +1,32 @@
+export const heroImages = [
+  '/slider/b.jpeg',
+  '/slider/c.jpeg',
+  '/slider/d.jpg',
+  '/slider/e.jpg',
+  '/slider/f.jpg',
+  '/slider/g.jpeg',
+  '/slider/h.jpg',
+];
+
 export const company = {
   name: 'MessNoMore Cleaning Service',
   shortName: 'MessNoMore',
-  tagline: 'Uganda\'s Trusted Cleaning Professionals',
+  tagline: 'Clean environment is a legal right we implement',
   description:
     'Professional cleaning services for homes, offices, and commercial spaces across Kampala and greater Uganda. We make your space spotless so you can focus on what matters.',
-  phone: '+256 700 123 456',
-  phoneAlt: '+256 772 456 789',
-  email: 'info@messnomore.co.ug',
-  emailBookings: 'bookings@messnomore.co.ug',
-  address: 'Plot 14, Kampala Road, Kampala, Uganda',
+  phone: '+256 788 689697',
+  phoneAlt: '+256 773 668870',
+  email: 'messnomore123@gmail.com',
+  postalAddress: 'P.O. Box 193324, Kampala (U)',
+  address: 'Mabirizi Complex, 7th Floor, Kampala Road, Kampala, Uganda',
   hours: {
     weekdays: 'Mon - Fri: 7:00 AM - 7:00 PM',
     saturday: 'Saturday: 8:00 AM - 6:00 PM',
     sunday: 'Sunday: Closed (Emergency only)',
   },
   social: {
-    facebook: 'https://facebook.com',
-    instagram: 'https://instagram.com',
-    twitter: 'https://twitter.com',
-    whatsapp: 'https://wa.me/256700123456',
+  
+    whatsapp: '0788 689697',
   },
   founded: 2018,
   stats: {
@@ -45,8 +53,7 @@ export const services = [
       'Eco-friendly products',
       'Flexible scheduling',
     ],
-    price: 'From UGX 80,000',
-    image: 'https://images.pexels.com/photos/4239035/pexels-photo-4239035.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/surfaces.jpg',
   },
   {
     slug: 'commercial-cleaning',
@@ -63,12 +70,12 @@ export const services = [
       'Window cleaning',
       'Waste management',
     ],
-    price: 'From UGX 150,000',
-    image: 'https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&cs=tinysrgb&w=800',
+    
+    image: '/person-in-blue-long-sleeve-shirt-sitting-beside-black-laptop-computer-9gpkrsbgmc.jpeg',
   },
   {
-    slug: 'carpet-upholstery-cleaning',
-    title: 'Carpet & Upholstery Cleaning',
+    slug: 'carpet-cleaning',
+    title: 'Carpet Cleaning',
     icon: 'Sparkles',
     short: 'Revive your carpets, sofas, and chairs with deep extraction.',
     description:
@@ -80,9 +87,11 @@ export const services = [
       'Fabric protection treatment',
       'Fast drying (2-4 hours)',
       'All fabric types',
+      'Fumigation services',
+      'Paver and Roof polishing'
     ],
-    price: 'From UGX 60,000',
-    image: 'https://images.pexels.com/photos/4239066/pexels-photo-4239066.jpeg?auto=compress&cs=tinysrgb&w=800',
+    
+    image: '/carpet-cleaning.jpeg',
   },
   {
     slug: 'post-construction-cleaning',
@@ -99,8 +108,8 @@ export const services = [
       'Debris removal',
       'Final walkthrough inspection',
     ],
-    price: 'From UGX 200,000',
-    image: 'https://images.pexels.com/photos/5824472/pexels-photo-5824472.jpeg?auto=compress&cs=tinysrgb&w=800',
+  
+    image: '/cleaning-company-our-work-29.webp',
   },
   {
     slug: 'move-in-move-out-cleaning',
@@ -117,7 +126,7 @@ export const services = [
       'Wall spot cleaning',
       'Garage & balcony included',
     ],
-    price: 'From UGX 120,000',
+    
     image: 'https://images.pexels.com/photos/4239014/pexels-photo-4239014.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
@@ -135,144 +144,90 @@ export const services = [
       'Purified water system',
       'Streak-free guarantee',
     ],
-    price: 'From UGX 40,000',
-    image: 'https://images.pexels.com/photos/4239063/pexels-photo-4239063.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-];
-
-export const testimonials = [
+    
+     image: '/IMG-20260713-WA0448.jpg',
+},
   {
-    name: 'Sarah Nakato',
-    role: 'Homeowner, Naguru',
-    avatar: 'https://images.pexels.com/photos/4906226/pexels-photo-4906226.jpeg?auto=compress&cs=tinysrgb&w=200',
-    rating: 5,
-    text: 'MessNoMore transformed my house. I came home from work and every room was spotless — even the kids\' rooms! The team was professional, on time, and so thorough. I\'ve booked them every two weeks since.',
-  },
-  {
-    name: 'David Okello',
-    role: 'Office Manager, Nakasero',
-    avatar: 'https://images.pexels.com/photos/3779448/pexels-photo-3779448.jpeg?auto=compress&cs=tinysrgb&w=200',
-    rating: 5,
-    text: 'We switched to MessNoMore for our office cleaning six months ago and the difference is night and day. The staff is reliable, the cleaning is consistent, and our employees have noticed. Highly recommended.',
-  },
-  {
-    name: 'Grace Atim',
-    role: 'Landlord, Kololo',
-    avatar: 'https://images.pexels.com/photos/4906227/pexels-photo-4906227.jpeg?auto=compress&cs=tinysrgb&w=200',
-    rating: 5,
-    text: 'After my tenants moved out, MessNoMore did a full move-out clean. The apartment looked better than when it was new. I got new tenants signed within a week. Worth every shilling.',
+    slug: 'fumigation-services',
+    title: 'Fumigation Services',
+    icon: 'Shield',
+    short: 'Eliminate pests and protect your property with professional fumigation.',
+    description:
+      'Our certified fumigation specialists use approved, safe chemicals to eradicate cockroaches, mosquitoes, termites, bed bugs, rodents, and other pests from homes, offices, warehouses, and commercial premises. We provide pre- and post-treatment inspections, safety certification, and follow-up visits to ensure complete elimination.',
+    features: [
+      'General pest fumigation',
+      'Termite control & prevention',
+      'Mosquito & fly fogging',
+      'Bed bug heat treatment',
+      'Rodent control & proofing',
+      'Food-safe commercial fumigation',
+      'Safety certification & warranty',
+      'Follow-up inspections',
+    ],
+    image: '/fumigation.jpeg',
   },
   {
-    name: 'James Mukasa',
-    role: 'Restaurant Owner, Kira',
-    avatar: 'https://images.pexels.com/photos/3779447/pexels-photo-3779447.jpeg?auto=compress&cs=tinysrgb&w=200',
-    rating: 5,
-    text: 'Hygiene is everything in the restaurant business. MessNoMore deep-cleans our kitchen and dining area every night. They\'re discreet, efficient, and the place is always ready for morning prep.',
+    slug: 'paver-cleaning-restoration',
+    title: 'Paver Cleaning and Restoration',
+    icon: 'Sparkles',
+    short: 'Restore your driveways, patios, and walkways to like-new condition.',
+    description:
+      'Years of dirt, moss, algae, oil stains, and weathering dull pavers and make surfaces slippery. Our professional paver restoration uses commercial-grade pressure washing, eco-friendly cleaners, and joint sand stabilization to bring back color, traction, and durability. We then apply a penetrating sealer that protects against stains, UV fading, and weed growth for years.',
+    features: [
+      'High-pressure surface cleaning',
+      'Moss, algae & weed removal',
+      'Oil & stain extraction',
+      'Joint sand replacement & stabilization',
+      'Penetrating sealer application',
+      'Anti-slip treatment available',
+      'Driveways, patios, pool decks, walkways',
+      'Color enhancement & UV protection',
+    ],
+    image: '/paver-cleaning.webp',
   },
   {
-    name: 'Patricia Auma',
-    role: 'Working Mother, Entebbe',
-    avatar: 'https://images.pexels.com/photos/4906228/pexels-photo-4906228.jpeg?auto=compress&cs=tinysrgb&w=200',
-    rating: 5,
-    text: 'With two kids and a full-time job, cleaning was always a burden. MessNoMore comes every Saturday and gives me my weekends back. They use safe products and my kids\' allergies have improved. Thank you!',
-  },
-  {
-    name: 'Robert Tumusiime',
-    role: 'Property Developer, Muyenga',
-    avatar: 'https://images.pexels.com/photos/3779446/pexels-photo-3779446.jpeg?auto=compress&cs=tinysrgb&w=200',
-    rating: 5,
-    text: 'I\'ve used MessNoMore for post-construction cleaning on three projects now. They remove every speck of dust and the units are handover-ready. Professional team, fair pricing, no surprises.',
+    slug: 'roof-cleaning-soft-washing',
+    title: 'Roof Cleaning and Soft Washing',
+    icon: 'Home',
+    short: 'Safe, low-pressure cleaning that extends roof life and boosts curb appeal.',
+    description:
+      'Traditional high-pressure washing damages tiles, shingles, and waterproofing. Our soft-wash method uses low-pressure, biodegradable solutions to kill and remove moss, lichen, algae, and black streaks at the root — without harming your roof or landscaping. We treat clay tiles, concrete tiles, shingles, metal sheets, and flat roofs, then apply a preventative inhibitor that keeps growth away for up to 3 years.',
+    features: [
+      'Soft-wash (low-pressure, no damage)',
+      'Moss, lichen & algae removal',
+      'Black streak (gloeocapsa) elimination',
+      'Gutter & downpipe clearing',
+      'Preventative growth inhibitor',
+      'Tile & shingle safe',
+      'Landscaping & pet safe',
+      'Up to 3-year protection warranty',
+    ],
+    image: '/roof.jpeg',
   },
 ];
 
 export const galleryImages = [
-  {
-    src: 'https://images.pexels.com/photos/4239035/pexels-photo-4239035.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Kitchen Deep Clean',
-    category: 'Residential',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Office Workspace',
-    category: 'Commercial',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239066/pexels-photo-4239066.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Carpet Extraction',
-    category: 'Carpet',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239063/pexels-photo-4239063.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Window Cleaning',
-    category: 'Windows',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239014/pexels-photo-4239014.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Move-Out Clean',
-    category: 'Move In/Out',
-  },
-  {
-    src: 'https://images.pexels.com/photos/5824472/pexels-photo-5824472.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Post-Construction',
-    category: 'Post-Construction',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Bathroom Sanitization',
-    category: 'Residential',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239027/pexels-photo-4239027.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Floor Polishing',
-    category: 'Commercial',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239030/pexels-photo-4239030.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Living Room Detail',
-    category: 'Residential',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239028/pexels-photo-4239028.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Stairwell Cleaning',
-    category: 'Commercial',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239034/pexels-photo-4239034.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Bedroom Refresh',
-    category: 'Residential',
-  },
-  {
-    src: 'https://images.pexels.com/photos/4239037/pexels-photo-4239037.jpeg?auto=compress&cs=tinysrgb&w=800',
-    title: 'Dining Area Clean',
-    category: 'Commercial',
-  },
-];
-
-export const team = [
-  {
-    name: 'Esther Nansubuga',
-    role: 'Founder & Managing Director',
-    avatar: 'https://images.pexels.com/photos/4906226/pexels-photo-4906226.jpeg?auto=compress&cs=tinysrgb&w=400',
-    bio: 'Esther started MessNoMore in 2018 after years in hospitality management. She saw a gap in Uganda for reliable, professional cleaning and built a team that delivers consistent quality.',
-  },
-  {
-    name: 'Daniel Ssebunya',
-    role: 'Operations Manager',
-    avatar: 'https://images.pexels.com/photos/3779448/pexels-photo-3779448.jpeg?auto=compress&cs=tinysrgb&w=400',
-    bio: 'Daniel oversees scheduling, quality control, and client relations. He ensures every job meets the MessNoMore standard — no exceptions.',
-  },
-  {
-    name: 'Mary Akello',
-    role: 'Head of Training',
-    avatar: 'https://images.pexels.com/photos/4906227/pexels-photo-4906227.jpeg?auto=compress&cs=tinysrgb&w=400',
-    bio: 'Mary trains every new team member in proper cleaning techniques, product safety, and customer service. She\'s the reason our quality never slips.',
-  },
-  {
-    name: 'Patrick Byaruhanga',
-    role: 'Commercial Team Lead',
-    avatar: 'https://images.pexels.com/photos/3779447/pexels-photo-3779447.jpeg?auto=compress&cs=tinysrgb&w=400',
-    bio: 'Patrick leads our commercial cleaning division, managing contracts with offices, clinics, and retail spaces across Kampala. He\'s our night-shift hero.',
-  },
+  { src: '/gallery/gallery-15.jpeg' },
+  { src: '/IMG-20260713-WA0448.jpg' },
+  { src: '/gallery/gallery-03.jpeg' },
+  { src: '/IMG-20260713-WA0525.jpg' },
+  { src: '/gallery/gallery-12.jpeg' },
+  { src: '/IMG-20260713-WA0279.jpg' },
+  { src: '/gallery/gallery-06.jpeg' },
+  { src: '/IMG-20260713-WA0424.jpg' },
+  { src: '/gallery/gallery-19.jpeg' },
+  { src: '/IMG-20260713-WA0241.jpg' },
+  { src: '/gallery/gallery-08.jpeg' },
+  { src: '/IMG-20260713-WA0427.jpg' },
+  { src: '/gallery/gallery-13.jpeg' },
+  { src: '/IMG-20260713-WA0452.jpg' },
+  { src: '/gallery/gallery-01.jpeg' },
+  { src: '/IMG-20260713-WA0261.jpg' },
+  { src: '/gallery/gallery-14.jpeg' },
+  { src: '/gallery/gallery-05.jpeg' },
+  { src: '/gallery/gallery-16.jpeg' },
+  { src: '/gallery/gallery-17.jpeg' },
+  { src: '/gallery/gallery-02.jpeg' },
 ];
 
 export const processSteps = [

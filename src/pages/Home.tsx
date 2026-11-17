@@ -1,40 +1,72 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Sparkles, Building2, HardHat, Truck, PanelsTopLeft, CheckCircle,
-  PhoneCall, CalendarCheck, Star, ArrowRight, Shield, Leaf, Clock, Award,
+  Building2, HardHat, Truck, PanelsTopLeft, CheckCircle,
+  PhoneCall, CalendarCheck, Star, ArrowRight, Shield, Leaf, Clock, Award, Sparkles,
 } from 'lucide-react';
 import { Home as HomeIcon } from 'lucide-react';
-import { company, services, testimonials, processSteps, galleryImages } from '../lib/data';
+import { company, services, processSteps, heroImages } from '../lib/data';
+import { LogoImg } from '../components/Logo';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Home: HomeIcon, Building2, Sparkles, HardHat, Truck, PanelsTopLeft,
+  Home: HomeIcon, Building2, LogoImg, HardHat, Truck, PanelsTopLeft,
   PhoneCall, CalendarCheck, CheckCircle,
 };
 
 export default function Home() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Preload the first hero slide so the hero image paints instantly
+  useEffect(() => {
+    const img = new Image();
+    img.src = heroImages[0];
+    return () => {
+      img.src = '';
+    };
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.pexels.com/photos/4239035/pexels-photo-4239035.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Professional cleaning"
-            className="w-full h-full object-cover"
-          />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="hero-slideshow">
+            {heroImages.map((img, i) => {
+              const isActive = i === current;
+              const isNext = i === (current + 1) % heroImages.length;
+              const shouldLoad = isActive || isNext;
+              return (
+                <img
+                  key={img}
+                  src={shouldLoad ? img : undefined}
+                  loading={shouldLoad ? 'eager' : 'lazy'}
+                  decoding="async"
+                  alt={`Professional cleaning ${i + 1}`}
+                  className="hero-slide object-cover object-center"
+                  style={{ opacity: isActive ? 1 : 0 }}
+                />
+              );
+            })}
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/40" />
         </div>
 
         <div className="container-max px-5 sm:px-8 lg:px-16 xl:px-24 relative z-10">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/20 border border-primary-400/30 backdrop-blur-sm mb-6 animate-fade-in-down">
-              <Sparkles className="w-4 h-4 text-primary-300" />
+              <LogoImg className="w-4 h-4 text-primary-300 object-contain" />
               <span className="text-sm font-medium text-primary-100">{company.tagline}</span>
             </div>
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6 animate-fade-in-up">
-              A Spotless Space,
-              <br />
-              <span className="text-gradient">Every Single Time</span>
+              Welcome To <span className="text-emerald-500">MESSNOMORE</span> cleaning services
             </h1>
             <p className="text-lg text-slate-200 leading-relaxed mb-8 max-w-xl animate-fade-in-up delay-200">
               Professional cleaning services for homes, offices, and commercial spaces across Kampala and greater Uganda. We make your space spotless so you can focus on what matters.
@@ -105,7 +137,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 mb-5">
-                <Sparkles className="w-4 h-4 text-primary-600" />
+                <LogoImg className="w-4 h-4 text-primary-600 object-contain" />
                 <span className="text-sm font-semibold text-primary-700">Why Choose MessNoMore</span>
               </div>
               <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-slate-900 mb-6 leading-tight">
@@ -137,23 +169,31 @@ export default function Home() {
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
                 <img
-                  src="https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/slider/b.jpeg"
                   alt="Cleaning service"
+                  loading="lazy"
+                  decoding="async"
                   className="rounded-2xl shadow-xl object-cover h-64 w-full animate-fade-in-up"
                 />
                 <img
-                  src="https://images.pexels.com/photos/4239027/pexels-photo-4239027.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/IMG-20260713-WA0305.jpg"
                   alt="Floor cleaning"
+                  loading="lazy"
+                  decoding="async"
                   className="rounded-2xl shadow-xl object-cover h-64 w-full mt-8 animate-fade-in-up delay-200"
                 />
                 <img
-                  src="https://images.pexels.com/photos/4239030/pexels-photo-4239030.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/slider/a.jpeg"
                   alt="Living room"
+                  loading="lazy"
+                  decoding="async"
                   className="rounded-2xl shadow-xl object-cover h-64 w-full -mt-4 animate-fade-in-up delay-300"
                 />
                 <img
-                  src="https://images.pexels.com/photos/4239034/pexels-photo-4239034.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/IMG-20260713-WA0525.jpg"
                   alt="Bedroom"
+                  loading="lazy"
+                  decoding="async"
                   className="rounded-2xl shadow-xl object-cover h-64 w-full mt-4 animate-fade-in-up delay-400"
                 />
               </div>
@@ -176,7 +216,7 @@ export default function Home() {
         <div className="container-max">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 mb-5">
-              <Sparkles className="w-4 h-4 text-primary-600" />
+              <LogoImg className="w-4 h-4 text-primary-600 object-contain" />
               <span className="text-sm font-semibold text-primary-700">Our Services</span>
             </div>
             <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-slate-900 mb-4">
@@ -189,7 +229,7 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => {
-              const Icon = iconMap[service.icon] || Sparkles;
+              const Icon = iconMap[service.icon] || LogoImg;
               return (
                 <Link
                   to="/services"
@@ -200,6 +240,8 @@ export default function Home() {
                     <img
                       src={service.image}
                       alt={service.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
@@ -212,8 +254,7 @@ export default function Home() {
                       {service.title}
                     </h3>
                     <p className="text-sm text-slate-500 leading-relaxed mb-4">{service.short}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-primary-600">{service.price}</span>
+                    <div className="flex justify-end">
                       <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
@@ -242,7 +283,7 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((step, i) => {
-              const Icon = iconMap[step.icon] || Sparkles;
+              const Icon = iconMap[step.icon] || LogoImg;
               return (
                 <div key={i} className="relative">
                   <div className="bg-white rounded-2xl p-6 shadow-md card-hover border border-slate-100">
@@ -265,88 +306,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Preview */}
-      <section className="bg-slate-50 section-padding">
-        <div className="container-max">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 mb-5">
-                <Sparkles className="w-4 h-4 text-primary-600" />
-                <span className="text-sm font-semibold text-primary-700">Our Work</span>
-              </div>
-              <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-slate-900">
-                Recent cleaning projects
-              </h2>
-            </div>
-            <Link to="/gallery" className="btn-secondary">
-              View Full Gallery
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.slice(0, 8).map((img, i) => (
-              <div
-                key={i}
-                className={`group relative overflow-hidden rounded-2xl shadow-md ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.title}
-                  className={`w-full object-cover transition-transform duration-700 group-hover:scale-110 ${i === 0 ? 'h-full min-h-[300px]' : 'h-48'}`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="text-xs font-medium text-primary-300 uppercase tracking-wider">{img.category}</span>
-                  <h4 className="font-semibold text-white text-sm">{img.title}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Preview */}
-      <section className="section-padding">
+      {/* Before & After */}
+      <section className="section-padding bg-slate-50">
         <div className="container-max">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 mb-5">
-              <Star className="w-4 h-4 text-primary-600 fill-current" />
-              <span className="text-sm font-semibold text-primary-700">Testimonials</span>
+              <Sparkles className="w-4 h-4 text-primary-600" />
+              <span className="text-sm font-semibold text-primary-700">Before & After</span>
             </div>
             <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-slate-900 mb-4">
-              Loved by clients across Uganda
+              See the transformation
             </h2>
             <p className="text-slate-600 leading-relaxed">
-              Don't just take our word for it. Here's what our clients have to say.
+              Watch how MessNoMore transforms spaces from messy to immaculate.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.slice(0, 3).map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl p-7 shadow-md card-hover border border-slate-100">
-                <div className="flex items-center gap-1 mb-4">
-                  {Array.from({ length: t.rating }).map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4 text-accent-500 fill-current" />
-                  ))}
-                </div>
-                <p className="text-slate-600 leading-relaxed mb-6 text-sm">"{t.text}"</p>
-                <div className="flex items-center gap-3">
-                  <img src={t.avatar} alt={t.name} className="w-11 h-11 rounded-full object-cover" />
-                  <div>
-                    <div className="font-semibold text-slate-900 text-sm">{t.name}</div>
-                    <div className="text-xs text-slate-500">{t.role}</div>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="relative">
+                <video
+                  src="/VID-20260629-WA0024.mp4"
+                  controls
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-red-600 text-white text-sm font-semibold rounded-full">
+                  BEFORE
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link to="/testimonials" className="btn-secondary">
-              Read More Reviews
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">Before Cleaning</h3>
+                <p className="text-sm text-slate-500 mt-1">The space before our professional team arrived.</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="relative">
+                <video
+                  src="/VID-20260629-WA0025.mp4"
+                  controls
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-emerald-600 text-white text-sm font-semibold rounded-full">
+                  AFTER
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-slate-900">After Cleaning</h3>
+                <p className="text-sm text-slate-500 mt-1">Spotless results delivered by MessNoMore.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

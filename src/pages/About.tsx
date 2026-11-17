@@ -3,7 +3,7 @@ import {
   Sparkles, Target, Eye, Heart, Shield, Leaf, Clock, Award,
   Users, TrendingUp, CheckCircle, ArrowRight, Quote,
 } from 'lucide-react';
-import { company, team } from '../lib/data';
+import { company,  } from '../lib/data';
 
 export default function About() {
   return (
@@ -12,7 +12,7 @@ export default function About() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.pexels.com/photos/4239027/pexels-photo-4239027.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/IMG-20260713-WA0305.jpg"
             alt="Cleaning team"
             className="w-full h-full object-cover"
           />
@@ -48,10 +48,13 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-slate-600 leading-relaxed">
                 <p>
-                  When Esther Nansubuga founded MessNoMore in {company.founded}, she had a simple frustration: finding a cleaning service in Kampala that actually showed up on time, did a thorough job, and used safe products. After years in hospitality management, she knew what "clean" should look like — and she knew Uganda deserved better.
+                  When  MessNoMore commenced business in 2018,  finding a professional cleaning service in Kampala that showed up in time, did a thorough job, and used safe products was a difficult. After years in hospitality management, we knew what "clean" should look like and realised Uganda deserved better.
                 </p>
                 <p>
-                  What started as a three-person team serving homes in Naguru and Kololo has grown into a {company.stats.team}-person operation serving homes, offices, restaurants, clinics, and construction sites across greater Kampala. We've cleaned over {company.stats.clients} spaces and maintained a {company.stats.satisfaction} satisfaction rate.
+                  At MCSL we conceit ourselves on the exceptional quality of service we deliver with our contract cleaning services. We have the most motivated team of cleaners who are highly trained and skilled at using the latest machinery used for cleaning and are experienced with cleaning all types of building spaces.
+                </p>
+                <p>
+                  Client satisfaction is the epitome of our services, this drives us to ensure that all our client's expectations are met with the high cleaning standards during the cleaning contract and we ensure working around the client's schedule by deploying the cleaners either as early as 5am before your employees arrive or at 6pm after employees have left not to inconvenience their stay at the work place.
                 </p>
                 <p>
                   But we haven't lost what made us different. Every team member is trained, uniformed, background-checked, and equipped with eco-friendly products. We show up when we say we will. And if something isn't right, we come back and fix it — no questions asked.
@@ -146,43 +149,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="bg-slate-50 section-padding">
-        <div className="container-max">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 mb-5">
-              <Users className="w-4 h-4 text-primary-600" />
-              <span className="text-sm font-semibold text-primary-700">Meet the Team</span>
-            </div>
-            <h2 className="font-display font-extrabold text-3xl lg:text-4xl text-slate-900 mb-4">
-              The people behind the sparkle
-            </h2>
-            <p className="text-slate-600 leading-relaxed">
-              Our leadership team brings years of experience in hospitality, operations, and customer service to every job.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, i) => (
-              <div key={i} className="group bg-white rounded-2xl overflow-hidden shadow-md card-hover">
-                <div className="relative h-72 overflow-hidden">
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display font-bold text-lg text-slate-900 mb-1">{member.name}</h3>
-                  <p className="text-sm text-primary-600 font-medium mb-3">{member.role}</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Quote Banner */}
       <section className="px-5 sm:px-8 lg:px-16 xl:px-24 py-20">
@@ -193,7 +159,7 @@ export default function About() {
               <p className="font-display font-bold text-2xl lg:text-3xl text-white leading-relaxed mb-6">
                 "We don't just clean spaces. We give people their time back, their peace of mind, and a place they're proud to call home or office."
               </p>
-              <p className="text-primary-100 font-medium">— Esther Nansubuga, Founder & Managing Director</p>
+              <p className="text-primary-100 font-medium">— MOLLY BUGIRI, Founder & Managing Director</p>
             </div>
           </div>
         </div>

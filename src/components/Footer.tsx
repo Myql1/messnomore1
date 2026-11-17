@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Sparkles, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, MessageCircle, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight } from 'lucide-react';
 import { company } from '../lib/data';
+import { LogoImg } from './Logo';
 
 export default function Footer() {
   return (
@@ -9,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <Link to="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg">
-                <Sparkles className="w-5 h-5 text-white" />
+          <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center shadow-lg">
+            <LogoImg className="w-8 h-8 object-contain" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-display font-extrabold text-lg text-white">
@@ -25,15 +26,6 @@ export default function Footer() {
               {company.description}
             </p>
             <div className="flex gap-3">
-              <a href={company.social.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href={company.social.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                <Twitter className="w-4 h-4" />
-              </a>
               <a href={company.social.whatsapp} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
                 <MessageCircle className="w-4 h-4" />
               </a>
@@ -43,14 +35,13 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-bold text-white text-lg mb-5">Quick Links</h4>
             <ul className="space-y-3">
-              {[
-                { name: 'Home', path: '/' },
-                { name: 'About Us', path: '/about' },
-                { name: 'Our Services', path: '/services' },
-                { name: 'Gallery', path: '/gallery' },
-                { name: 'Testimonials', path: '/testimonials' },
-                { name: 'Contact Us', path: '/contact' },
-              ].map((link) => (
+{[
+  { name: 'Home', path: '/' },
+  { name: 'About Us', path: '/about' },
+  { name: 'Our Services', path: '/services' },
+  { name: 'Gallery', path: '/gallery' },
+  { name: 'Contact Us', path: '/contact' },
+].map((link) => (
                 <li key={link.path}>
                   <Link to={link.path} className="text-sm text-slate-400 hover:text-primary-400 transition-colors flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 text-primary-500 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
@@ -71,6 +62,9 @@ export default function Footer() {
                 'Post-Construction',
                 'Move-In / Move-Out',
                 'Window Cleaning',
+                'Fumigation Services',
+                'Paver Cleaning & Restoration',
+                'Roof Cleaning & Soft Washing',
               ].map((service) => (
                 <li key={service}>
                   <Link to="/services" className="text-sm text-slate-400 hover:text-primary-400 transition-colors">
@@ -99,7 +93,7 @@ export default function Footer() {
                 <Mail className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                 <div className="flex flex-col">
                   <a href={`mailto:${company.email}`} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{company.email}</a>
-                  <a href={`mailto:${company.emailBookings}`} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{company.emailBookings}</a>
+                  <a href={`mailto:${company.postalAddress}`} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{company.postalAddress}</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">

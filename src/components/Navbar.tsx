@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sparkles, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { company } from '../lib/data';
+import { LogoImg } from './Logo';
 
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Gallery', path: '/gallery' },
-  { name: 'Testimonials', path: '/testimonials' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -37,8 +37,8 @@ export default function Navbar() {
     >
       <nav className="container-max px-5 sm:px-8 lg:px-16 xl:px-24 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-600/30 group-hover:scale-110 transition-transform duration-300">
-            <Sparkles className="w-5 h-5 text-white" />
+            <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center shadow-lg shadow-primary-600/30 group-hover:scale-110 transition-transform duration-300">
+              <LogoImg className="w-8 h-8 object-contain" />
           </div>
           <div className="flex flex-col leading-none">
             <span className={`font-display font-extrabold text-lg tracking-tight ${scrolled ? 'text-slate-900' : 'text-slate-900'}`}>
